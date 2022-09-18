@@ -11,6 +11,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from homepage.functions import handle_uploaded_file
+from django.views.generic import TemplateView
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
@@ -75,12 +77,10 @@ def index(request):
 def homepage(request):
     return render(request, 'main/home.html')
 
-# def upload(request):
-# 	if request.method == "POST":
-# 		form = FilesForm(request.POST, request.FILES)
-# 		if form.is_valid():
-# 			form.save()
-# 		return redirect("main:upload")
-# 	form = FilesForm()
-# 	movies = Files.objects.all()
-# 	return render(request=request, template_name="main/upload.html", context={'form':form, 'movies':movies})
+
+def upload(request):
+    if request.method == "POST":
+        uploaded_file = request.FILES['document']
+        fs = FileSystemStorage()
+        fs.save(uploaded_file.name, uploaded_file)
+    return render(request, 'upload.html')
