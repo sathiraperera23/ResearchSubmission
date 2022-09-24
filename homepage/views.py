@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .forms import NewUserForm, StudentForm
+from .forms import StudentForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
@@ -78,9 +78,9 @@ def homepage(request):
     return render(request, 'main/home.html')
 
 
-def upload(request):
-    if request.method == "POST":
-        uploaded_file = request.FILES['document']
-        fs = FileSystemStorage()
-        fs.save(uploaded_file.name, uploaded_file)
-    return render(request, 'upload.html')
+# def upload(request):
+#     if request.method == "POST":
+#         uploaded_file = request.FILES['document']
+#         fs = FileSystemStorage()
+#         fs.save(uploaded_file.name, uploaded_file)
+#     return render(request, 'upload.html')
