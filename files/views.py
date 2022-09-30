@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseRedirect
+from files.forms import FileForm
 
 # Create your views here.
 
@@ -10,3 +12,15 @@ def upload(request):
         fs = FileSystemStorage()
         fs.save(uploaded_file.name, uploaded_file)
     return render(request, 'upload.html')
+
+
+def fileupload(request):
+    if request.method == 'POST':
+        form = FileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form = FileForm()
+    return render(request, "upload.html", {
+        "form": form
+    })
