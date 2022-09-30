@@ -21,6 +21,6 @@ def fileupload(request):
             form.save()
     else:
         form = FileForm()
-    return render(request, "upload.html", {
-        "form": form
-    })
+    context = {'form': form}
+    return render(request, 'fileupload.html', context)
+   

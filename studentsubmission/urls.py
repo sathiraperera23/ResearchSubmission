@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from homepage import views
 from homepage import views
-from files.views import upload
+from files.views import fileupload, upload
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -32,6 +32,8 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('index', views.index, name='index'),
     path('upload', upload, name='upload'),
+    path('uploadfile', fileupload, name='uploadfile'),
+
 ]
 
 if settings.DEBUG:
