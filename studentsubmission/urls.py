@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from homepage import views
 from homepage import views
-from files.views import fileupload, upload
+from files.views import fileupload, upload, filedownload
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -33,6 +33,7 @@ urlpatterns = [
     path('index', views.index, name='index'),
     path('upload', upload, name='upload'),
     path('uploadfile', fileupload, name='uploadfile'),
+    path('downloadfile', filedownload, name='downloadfile'),
 
 ]
 

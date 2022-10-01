@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
 from files.forms import FileForm
+from files.models import FileData
 
 # Create your views here.
 
@@ -25,4 +26,8 @@ def fileupload(request):
         form = FileForm()
     context = {'form': form}
     return render(request, 'fileupload.html', context)
-   
+
+
+def filedownload(request):
+    file = FileData.objects.all()  # Collect all records from table
+    return render(request, 'filedownload.html', {'file': file})
