@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
 from files.forms import FileForm
@@ -19,6 +19,8 @@ def fileupload(request):
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+        return redirect('uploadfile')
+
     else:
         form = FileForm()
     context = {'form': form}
