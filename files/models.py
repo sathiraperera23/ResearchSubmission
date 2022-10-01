@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 # Create your models here.
 
@@ -11,3 +12,4 @@ class FileData(models.Model):
     lastname = models.CharField(max_length=20)
     email = models.EmailField()
     file = models.FileField(null=True, blank=True)
+    approval = models.IntegerField(default=0)

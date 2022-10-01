@@ -18,6 +18,7 @@ class FileForm(forms.ModelForm):
     # lastname = forms.CharField(label="Enter last name", max_length=10)
     # email = forms.EmailField(label="Enter Email")
     # file = forms.FileField()
-     class Meta:
+    class Meta:
         model = FileData
-        fields = "__all__"
+        # fields = "__all__"
+        fields = ['firstname', 'lastname', 'email', 'file']

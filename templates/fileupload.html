@@ -32,11 +32,13 @@
             <div class="mb-3">
                 {{form.file|as_crispy_field}}
             </div>
+            <div class="mb-3">
+            {{ form.aprroval.as_hidden }}
+        </div>
 
 
-
-            <!-- <input type="submit" class="btn btn-primary" value="Upload"> -->
-            <input type="submit" class="btn btn-outline-primary">
+            <input type="submit" class="btn btn-primary" value="Upload">
+            <!-- <input type="submit" class="btn btn-outline-primary"> -->
 
         </form>
 

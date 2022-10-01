@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
 from files.forms import FileForm
@@ -31,3 +31,16 @@ def fileupload(request):
 def filedownload(request):
     file = FileData.objects.all()  # Collect all records from table
     return render(request, 'filedownload.html', {'file': file})
+
+
+def approval(request, id):
+    files = get_object_or_404(FileData, id=id)
+    files = FileData.objects.update(approval=0)
+    # return render(request, 'filedownload.html', {'files': files})
+    return redirect('downloadfile')
+
+
+def delete(request, id):
+    data = get_object_or_404(FileData, id=id)
+    data.delete()
+    return redirect('downloadfile')
