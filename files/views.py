@@ -35,7 +35,7 @@ def filedownload(request):
 
 def approval(request, id):
     files = get_object_or_404(FileData, id=id)
-    files = FileData.objects.update(approval=0)
+    files = FileData.objects.update(approval=1)
     # return render(request, 'filedownload.html', {'files': files})
     return redirect('downloadfile')
 
